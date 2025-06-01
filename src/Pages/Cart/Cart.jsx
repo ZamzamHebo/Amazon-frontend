@@ -42,7 +42,7 @@ import { DataContext } from "../../components/Context/Context";
 import ProductCard from "../../components/Product/ProductCard";
 import CurrencyFormat from "../../components/CurrencyFormat/CurrencyFormat";
 import { Link } from "react-router-dom";
-import { Type } from "../../Utility/Action.type";
+import { Type } from "../../Utility/action.type";
 import styles from "./Cart.module.css";
 import { MdDelete } from "react-icons/md";
 import { IoIosArrowUp } from "react-icons/io";

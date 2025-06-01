@@ -4,10 +4,10 @@ import { Rating } from "@mui/material";
 import styles from "./ProductCard.module.css";
 import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import { Link } from "react-router-dom";
-import { Type } from "../../Utility/Action.type";
+import { Type } from "../../Utility/action.type";
 import Category from "../Category/Category";
 
-function ProductCard({ product, detail, notdisplayAdd }) {
+function ProductCard({ product, detail, notdisplayAdd, payment, cart }) {
   const { image, title, price, rating, id, category, description } = product;
 
   const [state, dispatch] = useContext(DataContext);
@@ -24,7 +24,8 @@ function ProductCard({ product, detail, notdisplayAdd }) {
       <div
         className={`${styles.product_container} ${
           detail ? styles.product_flexed : ""
-        }`}
+        } ${cart ? styles.product_cart : ""}
+        ${payment ? styles.product_payment : ""}`}
       >
         <Link to={`/products/${id}`}>
           <div className={styles.product_image_container}>
@@ -45,26 +46,31 @@ function ProductCard({ product, detail, notdisplayAdd }) {
         <div className={styles.product_price}>
           <CurrencyFormat amount={price} />
         </div>
-        <div className={styles.product_quantity}>
-          <select>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
+        {!payment ? (
+          <div className={styles.product_quantity}>
+            <select>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+        ) : (
+          ""
+        )}
+
         <div className={styles.product_spacer}></div>
         <div className={styles.added_to_cart}>
           {/* <img src="#" alt="#" /> */}
         </div>
-        {notdisplayAdd && (
+        {!notdisplayAdd && (
           <button
             className={`${styles.add_to_cart_button} button_primary`}
             onClick={handleAddToCart}

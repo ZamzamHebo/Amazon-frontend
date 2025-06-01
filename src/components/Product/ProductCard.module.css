@@ -74,6 +74,25 @@
   font-weight: 700;
   margin-bottom: 10px;
 }
+.product_payment {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  grid-template-rows: repeat(4, auto);
+  gap: 5rem;
+  border: none;
+  padding: 0;
+}
+.product_payment > :nth-child(1) {
+  grid-column: 1;
+  grid-row: 1 / span 4;
+  align-self: start;
+}
+.product_payment > :nth-child(2) {
+  padding-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
 @media (max-width: 768px) {
   .product_container.product_flexed {
     border-right: none;

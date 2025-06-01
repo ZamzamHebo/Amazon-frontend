@@ -33,11 +33,7 @@ function Product() {
       ) : (
         <section className={styles.product__container}>
           {products.map((product) => (
-            <ProductCard
-              product={product}
-              key={product.id}
-              notdisplayAdd={true}
-            />
+            <ProductCard product={product} key={product.id} />
           ))}
         </section>
       )}

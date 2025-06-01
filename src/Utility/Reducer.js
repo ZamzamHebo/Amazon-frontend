@@ -1,6 +1,6 @@
-import { Type } from "./Action.type";
+import { Type } from "./action.type.js";
 
-export const initial = { cart: [] };
+export const initial = { cart: [], user: null };
 
 export function reducer(state, action) {
   switch (action.type) {
@@ -39,6 +39,17 @@ export function reducer(state, action) {
       }
       return { ...state, cart: newCart };
 
+    case Type.SET_USER:
+      return {
+        ...state,
+        user: action.user,
+      };
+
+    case Type.CLEAR_CART:
+      return {
+        ...state,
+        cart: [],
+      };
     default:
       // throw new Error("Unknown Action");
       return state;
